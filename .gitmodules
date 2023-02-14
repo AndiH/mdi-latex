@@ -1,0 +1,6 @@
+[submodule "MaterialDesign-Font"]
+	path = MaterialDesign-Font
+	url = git@github.com:Templarian/MaterialDesign-Font.git
+[submodule "MaterialDesign-Webfont"]
+	path = MaterialDesign-Webfont
+	url = git@github.com:Templarian/MaterialDesign-Webfont.git

@@ -1,0 +1,22 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{mdi}[2023/01/23 Material Design Icons]%
+%
+\RequirePackage{fontspec}%
+\RequirePackage{luacode}%
+\newfontfamily{\mdifont}{Material Design Icons Desktop}%
+\begin{luacode}
+  documentdata       = documentdata or { }
+
+  local stringformat = string.format
+  local texsprint    = tex.sprint
+  local slot_of_name = luaotfload.aux.slot_of_name
+
+  documentdata.fontchar = function (chr)
+    local chr = slot_of_name(font.current(), chr, false)
+    if chr and type(chr) == "number" then
+      texsprint
+        (stringformat ([[\char"%X]], chr))
+    end
+  end
+\end{luacode}
+\newcommand{\mdi}[1]{{\mdifont\luadirect{documentdata.fontchar "#1"}}}
