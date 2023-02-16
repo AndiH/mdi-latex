@@ -13,7 +13,7 @@ def old__return_tex_string(name, code):
 def return_tex_string(name):
     return "  \\mdi{" + name + "}: "+ f"{name}"
 
-output = r"\begin{tabular}{l l l}" + '\n'
+output = r"\begin{longtable}{p{4.5cm} p{4.5cm} p{4.5cm}}" + '\n'
 count = 0
 for index, row in df.iterrows():
     name = row[0]
@@ -32,7 +32,7 @@ print(output[-2])
 if (output[-2] == '&'):
     output = output[:-2]
     output += '\n'
-output += r'\end{tabular}'
+output += r'\end{longtable}'
 
 with open('mdi-definitions.tex', 'w') as f:
     f.write(output)
